@@ -1,0 +1,30 @@
+<% include partials/header.ejs %>
+
+<div class="ui grid container segment" id="add-button-div">
+    <a href="/new" class="ui right labeled icon button">
+  <i class="right arrow icon"></i>
+  Add a new receipe now!
+</a>
+      
+</div>
+
+
+<% recipes.forEach(function(recipe){ %>
+<div class="ui grid container segment">
+    <div class="four wide column">
+        <img src="<%=recipe.image%>" class="ui medium rounded image">
+    </div>
+    <div class="twelve wide column">
+        
+     <h2><%= recipe.title %></h2>
+     
+     <% recipe.steps.forEach(function(step){ %>
+     <p><%=step.content%></p>
+     
+     <% }) %>
+    </div>
+    <a href="/blogs/<%=recipe._id%>">More Details</a>
+</div>
+
+<% }) %>
+<% include partials/footer.ejs %>
