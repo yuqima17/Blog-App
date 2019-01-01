@@ -2,55 +2,56 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
-        <link rel="stylesheet" type="text/css" href="header.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/header.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!--<script type="text/javascript" src="/javascript/main.js"></script>-->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
         
-  
     </head>
     <body>
         <div class="ui container" id="bodycontainer">
-        <h1 id="Title">Blog Receipe</h1>
+        <h1 id="Title"><span id="off">OFF </span><span id="the">THE </span><span id="chef">CHEF</span></h1>
+        <p id="subtitle">A simple blog site for sharing and reading ready-to-use recipes </p>
         
-            <div class="ui secondary  menu">
+            <div class="ui inverted menu" id="menu">
                 <a class="active item" href="/">
                     Home
                   </a>
-                  <a class="item">
+                  
+                  <a class="item" href="/new" >
+                    Add a Receipe
+                  </a>
+                  <% if (currentUser){%>
+                  <a class="item" href="/blogs/myreceipes/<%=currentUser._id%>" >
                     My Receipes
                   </a>
+                  <% } %>
                   <div class="right menu">
-                    
-                    <a class="ui item">
+                     <% if(!currentUser){ %>
+                     <a href="/login" class="ui item">
                       Login
                     </a>
-                     <a class="ui item">
+                     <a href="/register" class="ui item">
                       Sign Up
-                    </a>
-                     <a class="ui item">
+                      </a>
+                    
+                     <% }else{ %>
+                     <a href="/" class="ui item">
+                         
+                         <img src="<%=currentUser.photo%>" class="ui avatar image">
+                         <span><%=currentUser.username%></span>
+
+                     </a>
+                     <a href="/logout" class="ui item">
                       Logout
                     </a>
+                     <% } %>
+                    
+                    
+                    
+                     
                   </div>
                 </div>
                 
-                <div class="ui grid container">
-                    <div class="six wide column">
-                        <div class="ui grid container segment">
-                            <div class="row">
-                                <div class="ui icon input">
-                                    <input type="text" placeholder="Search...">
-                                    <i class="search link icon"></i>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="sixteen wide column">
-                                    <div id="map"></div>
-                                </div>
-                                
-                            </div>
-                                
-                        </div>
-                             
-                    </div>
-                     
                 
-                    
-                    <div class="ten wide column">

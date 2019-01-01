@@ -1,4 +1,142 @@
 <% include partials/header.ejs %>
+                  
+<div class="ui grid container segment">
+    <div class="sixteen wide column">
+        <div class="ui labeled button" id="likebutton" tabindex="0">
+  <form action="/blogs/<%=recipe._id%>/likes" method="POST">
+      <button class="ui button">
+    <i class="heart icon"></i> Like
+  </button>
+  </form>
+  
+  <a class="ui basic label">
+    <%=recipe.likes%>
+  </a>
+</div>
+       
+         
+        
+            
+               
+        <% if (currentUser && recipe.creator.id.equals(currentUser._id)){ %>
+        <form class="floatRight"><a href="/blogs/<%=recipe._id%>/update" class="ui icon button float right" ><i class="edit icon"></i></a></form>
+        <form class="floatRight" id="show-top" action="/blogs/<%=recipe._id%>?_method=DELETE" method="POST">
+        <button type="submit" class="ui icon button"><i class="trash icon"></i></button>
+    </form>
+        <% } %>
+        
+       <h2><%=recipe.title%></h2>
+       <p><a href="/blogs/user/<%=recipe.creator.id%>"><img class="ui avatar image" src="<%=recipe.creator.photo%>"> <strong><%=recipe.creator.username%>   </strong></a>
+       &nbsp  <i>on &nbsp<%=recipe.createDate%></i></p>
+       <p><%=recipe.desc%></p>
+       
+       
+       <p>
+           <% if(recipe.cooktime){ %>
+           <strong>Time:</strong><%=recipe.cooktime%>
+           &nbsp &nbsp
+           <% } %>
+           <% if(recipe.meal){ %>
+           <strong>Good for:</strong>
+       <%=recipe.meal%> 
+       <% } %>
+       </p>
+     
+       
+       <p2>
+           <% if (recipe.healthy || recipe.flavor){ %>
+           <strong>Hashtags: </strong>
+           <% } %>
+          
+      <% recipe.healthy.forEach(function(tag){%> 
+      &nbsp
+      <a href="/blogs/hashtags/<%=tag%>">
+           #<%=tag%>&nbsp
+      </a>
+       
+       <% }) %>
+       
+       <% recipe.flavor.forEach(function(tag){ %>
+       <a href="/blogs/hashtags/<%=tag%>">#<%=tag%></a>
+        
+       <% })%>
+       
+       </p2>
+       
+    
+    <!--images-->
+       <div class="ui medium images">
+           <% recipe.images.forEach(function(image){ %>
+           
+               <img src="<%=image%>" id="show-image">
+           
+           
+       <% }) %>
+       </div>
+       
+    <!--ingredients-->
+    <%if (recipe.ingredients){ %>
+    <h4>Ingredients:</h4>
+    <% }%>
+    <div class="ui grid">
+        <% recipe.ingredients.forEach(function(ing){%>
+        <div class="four wide column" id="ing-single-div">
+            <p><%=ing.typeOfFood%></p>
+            <p><%=ing.amount%></p>
+        </div>
+        
+        <% })%>
+</div>
+    
+    
+    <!--instruction-->
+    <% if (recipe.steps){ %>
+    <h4>Instructions:</h4>
+    <% } %>
+    <% var i=1;%>
+    <% recipe.steps.forEach(function(step){%>
+    <p><%=i%>. <%=step%></p>
+    <% i++; %>
+    <% })%> 
+    
+    
+    
+    
+    
+    
+    </div>
+</div>
 
-                        <p>show page with error</p>
+<div class="ui grid container segment">
+    <div class="sixteen wide column">
+        <h4>Comments:</h4>
+        <% if (currentUser){%>
+        <form action="/blogs/<%=recipe._id%>/comment" method="POST" class="ui form">
+            <div class="field">
+               
+                <img src="<%=currentUser.photo%>" class="ui avatar image"><span><%= currentUser.username%></span>
+                <textarea rows="1" name="comment[text]" >comment here</textarea>
+            </div>
+            <button id="show-submit-comment-button"  type="submit">submit</button>
+        </form>
+        <% }%>
+                
+            </div>
+            <% recipe.comments.forEach(function(comment){ %>
+            <div class="four wide column">
+                <p><img class="ui avatar image" src="<%=comment.author.photo%>"><%= comment.author.username %></p>
+                <p6><i><%= comment.date %></i></p6>
+            </div>
+            <div class="twelve wide column">
+                
+                <p><%= comment.text %></p>
+            </div>
+             <% }) %>
+        </div>
+        
+       
+        </div>
+
+
 <% include partials/footer.ejs %>
+                        

@@ -1,0 +1,264 @@
+#Title{
+    text-align:center;
+    margin-top:60px;
+    margin-bottom:10px;
+}
+#subtitle{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:0;
+    margin-bottom:40px;
+    color:rgb(137,137,137);
+}
+#bodycontainer{
+    width:70%;
+}
+#menu{
+    
+    margin:auto;
+    border-radius:0;
+}
+#home-div-recipe{
+    
+    padding:0;
+}
+#map {
+        height: 200px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+#add-button-div{
+    border:0;
+}
+#showpage-img{
+    width:100%;
+}
+#lable-image{
+    display:inline;
+}
+#imageInput{
+    width:90%;
+}
+#stepInput{
+    width:90%;
+}
+#lable-Steps{
+    display:inline;
+}
+#lable-Ings{
+    display:inline;
+}
+#ingTypeInput{
+    width:38%;
+    margin:0 auto;
+}
+#ingAmountInput{
+    width:38%;
+    margin:0 auto;
+}
+#checkIng{
+    width:5%;
+}
+#lableCheckIng{
+    display:inline;
+}
+
+
+h2{
+    margin-top:0;
+}
+
+.floatRight{
+    float:right;
+}
+#likebutton{
+    float:right;
+}
+
+
+#ing-single-div{
+    text-align:center;
+}
+p{
+    margin:0;
+}
+p2{
+    margin:0;
+    display:block;
+}
+a{
+    color:black;
+}
+#show-image{
+    width:250px;
+    height:200px;
+    object-fit: cover
+}
+#show-submit-comment-button{
+    float:right;
+    border:0;
+    background-color:white;
+}
+#show-submit-comment-button:hover{
+    color:rgb(126, 170, 51);
+}
+p6{
+    font-size:0.8em;
+}
+
+.ui.container.segment{
+    border-radius:0;
+}
+#searchdiv{
+    width:90%;
+    margin:auto;
+    border-radius:0;
+}
+#searchinput{
+    border-radius:0;
+}
+#usernameafterphoto{
+    font-size:1.1em;
+}
+#moreDetails{
+    text-align:right;
+}
+#off{
+    color:rgb(247,148,29);
+}
+#the{
+    color:rgb(255,203,5);
+}
+#chef{
+    color:rgb(126, 170, 51);
+}
+
+#myrecipe-img{
+    margin-top:30px;
+    margin-left:auto;
+    margin-right:auto;
+    width:200px;
+    height:200px;
+    object-fit: cover
+}
+#tag-img{
+    margin-top:30px;
+    margin-left:auto;
+    margin-right:auto;
+    width:200px;
+    height:200px;
+    object-fit: cover
+}
+#desc{
+    text-align:center;
+    font-size:1em;
+    font-weight:bold;
+}
+#maincontent{
+    margin-top:1em;
+    padding-right:0;
+}
+#menurecipe{
+    width:100%;
+    border-radius:0;
+    margin-bottom:0;
+}
+#recipe-title{
+    
+    font-weight:bold;
+}
+.ui.inverted.menu{
+    background:rgb(126, 170, 51)
+}
+#home-recipe-img{
+    margin:10px;
+}
+#home-recipe-content{
+    margin:10px;
+}
+#menuside{
+    width:100%;
+    border-radius:0;
+    margin-bottom:0;
+}
+#sidecontent{
+    margin-top:1em;
+}
+#detail-button{
+    background:rgb(126, 170, 51);
+    color:white;
+}
+#add-button{
+    background:rgb(126, 170, 51);
+    color:white;
+}
+#log-button{
+    background:rgb(126, 170, 51);
+    color:white;
+}
+.ui.container.segments{
+    border-radius:0;
+}
+#sidebar{
+    padding-left:0;
+    padding-right:0;
+}
+#add-div-form{
+    padding:10px;
+    margin-bottom:50px;
+}
+#loginform-div{
+    text-align:center;
+    width:60%;
+    
+}
+.lable-form{
+    font-size:1.2em;
+    font-weight:bold;
+    color:rgb(126, 170, 51);
+}
+#loginform{
+    margin:15px;
+}
+#loginform{
+    margin:15px;
+}
+#commentButton:hover{
+    color:rgb(126, 170, 51);
+}
+#form-search{
+    width:100%;
+}
+#home-tag-div{
+    height:86px;
+    
+}
+#home-tag-img{
+    width:100%;
+    height:78px;
+    object-fit: cover
+}
+.hidden{
+    display:none;
+}
+.semi-trans{
+    opacity:0.5;
+}
+#home-tag-div a{
+    text-align:center;
+    font-size:1.1em;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:30px;
+    padding-left:auto;
+    padding-right:auto;
+}
+
+#home-tag-div a:hover{
+    color:rgb(126, 170, 51);
+    margin:auto;
+    padding-top:30px;
+}
+#add-button-div{
+    text-align: right
+}

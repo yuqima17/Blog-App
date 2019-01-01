@@ -1,0 +1,134 @@
+<% include partials/header.ejs %>
+<div class="ui grid container segment">
+
+                
+                    
+                    <div class="sixteen wide column" >
+                        
+  <div class="ui segment" id="add-div-form">
+                        
+
+         <form class="ui form" action="/blogs/<%=recipe._id%>/update?_method=PUT" method="POST">
+  <div class="field">
+    <label>TITLE</label>
+    <input type="text" name="recipe[title]" value="<%=recipe.title%>">
+  </div>
+<div class="field">
+    <label>TITLE</label>
+    <textarea type="text" name="recipe[desc]" row="1"><%=recipe.desc%></textarea>
+  </div>
+
+  
+  <div class="field" id="div-steps">
+    <lable>STEPS</lable><span id="addStepSpan"><i class="plus icon" ></i> </span>
+    <% recipe.steps.forEach(function(step){ %>
+    <div class="item"><input class='ui input' type='text' name='recipe[steps]' value="<%=step%>" id="stepInput"><span id='deleteStepSpan'><i class='minus icon'></i></span></div>
+    <% })%>
+
+  </div>
+  
+  
+  
+    <div class="field" id="div-ings">
+    <lable>INGREDIENTS</lable><span id="addIngSpan"><i class="plus icon" ></i> </span>
+    <% var i=0; %>
+    <% recipe.ingredients.forEach(function(ing){ %>
+    <div class='item'>
+      <input class='ui input' type='text' name="recipe[ingredients][<%=i%>][typeOfFood]" value="<%=ing.typeOfFood%>" id='ingTypeInput'>
+      <input class='ui input' type='text' name='recipe[ingredients][<%=i%>][amount]' value='<%=ing.amount%>' id='ingAmountInput'>
+      <span id='deleteIngSpan'><i class='minus icon'></i></span>
+      <% i++; %>
+    </div>
+    <% })%>
+    </div>
+   
+
+  
+  
+  
+  
+  <div class="field">
+    <label id="lable-Meals">MEAL CATEGORY</label>
+    <div class="ui selection dropdown" id="div-meal">
+      <input type="hidden" name="recipe[meal]" id="inputCooktime">
+      <i class="dropdown icon"></i>
+      <div class="default text" data-value="<%=recipe.meal%>"><%=recipe.meal%></div>
+      <div class="menu">
+        
+              <div class="item" data-value="breakfast & brunch" id="item-meal">breakfast & brunch</div>
+              <div class="item" data-value="lunch & dinner" id="item-meal">lunch & dinner</div>
+              <div class="item" data-value="dessert" id="item-meal">dessert</div>
+              <div class="item" data-value="snacks & appitizer" id="item-meal">snacks & appitizer</div>
+              <div class="item" data-value="soup" id="item-meal">soup</div>
+          </div>
+    </div>
+    
+  </div>
+  
+  
+    <div class="field">
+    <label id="lable-cooktime">COOK TIME</label>
+    <div class="ui selection dropdown" id="div-cooktime">
+      <input type="hidden" name="recipe[cooktime]">
+      <i class="dropdown icon"></i>
+      <div class="default text item" data-value="<%=recipe.cooktime%>"><%=recipe.cooktime%></div>
+      <div class="menu">
+              <div class="item" data-value="<10 min">10 min</div>
+              <div class="item" data-value="10-20 min">10-20 min</div>
+              <div class="item" data-value="20 min-1 hr">20 min-1 hr</div>
+              <div class="item" data-value=">1 hr">>1 hr</div>
+          </div>
+    </div>
+    
+  </div>
+   <p><strong>Current Hashtags: </strong>
+      <% recipe.healthy.forEach(function(tag){%>
+        #<%=tag%>
+       <% }) %>
+       <% recipe.flavor.forEach(function(tag){ %>
+        #<%=tag%>
+       <% })%>
+       </p>
+
+
+  
+  <div class="two fields">
+    <div class="field">
+      <label>HEALTH HASHTAGS</label>
+      <select class="ui fluid dropdown" multiple="" name="recipe[healthy]" >
+        <option value="">Healthy</option>
+   <option value="LowSugar&SugarFree">Sugar Free</option>
+   <option value="LowCalerie">Low Calerie</option>
+   <option value="Diabetic">Diabetic</option>
+   <option value="Vegan&Vegetarian">Vegan & Vegetarian</option>
+   <option value="LowCarb">Low Carb</option>
+   <option value="GlutenFree">Gluten Free</option>
+   <option value="LowFat">Low Fat</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>FLAVOR HASHTAGS</label>
+      <select class="ui fluid dropdown" multiple="" name="recipe[flavor]">
+        <option value="">Yammy</option>
+        <option value="Sweet">Sweet</option>
+        <option value="Savory">Savory</option>
+        <option value="Spicy">Spicy</option>
+        <option value="Salty">Salty</option>
+        <option value="Spiced">Spiced</option>
+        <option value="Light">Light</option>
+        <option value="Sour">Sour</option>
+      </select>
+    </div>
+  </div>
+ 
+ <div id="add-button-div"><button class="ui button" type="submit" id="add-button">UPDATE</button></div>
+</form>
+
+    </div>
+    
+
+</div>
+</div>
+</div>
+
+<% include partials/footer.ejs %>

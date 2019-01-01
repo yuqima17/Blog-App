@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/header.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!--<script type="text/javascript" src="/javascript/main.js"></script>-->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+        
+    </head>
+    <body>
+        <div class="ui container" id="bodycontainer">
+        <h1 id="Title"><span id="off">OFF </span><span id="the">THE </span><span id="chef">CHEF</span></h1>
+        <p id="subtitle">A simple blog site for sharing and reading ready-to-use recipes </p>
+        <div class="ui container" id="loginform-div">
+            <form action="/login" method="POST" class="ui form" id="loginform">
+                <div class="field">
+                    <lable class="lable-form">Username</lable>
+                    <input type="text" placeholder="username" name="username">
+                </div>
+                <div class="field">
+                    <lable class="lable-form">Password</lable>
+                    <input type="password" placeholder="password" name="password">
+                </div>
+                
+                
+                <button type="submit" id="log-button" class="ui button">LOG IN</button>
+            </form>
+        </div>
+        </div>
+    </body>
+    
+</html>
+

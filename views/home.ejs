@@ -1,30 +1,97 @@
 <% include partials/header.ejs %>
 
-<div class="ui grid container segment" id="add-button-div">
-    <a href="/new" class="ui right labeled icon button">
-  <i class="right arrow icon"></i>
-  Add a new receipe now!
-</a>
+<div class="ui grid container">
+                    <div class="five wide column" id="sidebar" >
+                        <div class="ui container segments" id="sidecontent">
+                            <div class="ui inverted menu" id="menuside">
+                                <div class="item">
+                                  Search
+                                </div>
+                            </div>
+                            <div class="ui container segment">
+                            
+                                <form action="/blogs/search" method="POST"  class="ui action input" id="form-search">
+                                    <input type="text" placeholder="Search by title" name="titleSearch">
+                                    <button class="ui icon button" type="submit">
+                                    <i class="search icon"></i>
+                                    </button>
+                                </form>
+                                
+                                
+                                <% recipes.forEach(function(recipe){ %>
+                                
+                                <% if(recipe.searched){ %>
+                                <a href="/blogs/<%=recipe._id%>"><p><%=recipe.title%><span class="floatRight"><%=recipe.likes%>&nbsp likes</span></p> </a>
+                                
+                                <% }%>
+                                <% }) %>
+                           
+                            
+                              
+                            </div>
+                            <div class="ui container segment" id="home-side-tag">
+                                <% tags.forEach(function(tag){ %>
+                                <div id="home-tag-div">
+                                    <img src="<%=tag.image%>" id="home-tag-img">
+                                    <a href="/blogs/hashtags/<%=tag.tag%>" class="hidden" id="home-tag-img-back"><%=tag.tag%></a>
+                                </div>
+                                <% }) %>
+                                
+                                
+                            </div>
+                            
+                        </div>
+                             
+                        </div>
+                    
+                     
+                
+                    
+                    <div class="eleven wide column" id="maincontent">
+                        <div class="ui container segments">
+                            <% for (var i=recipes.length-1;i>=0;i--){ %>
+                                <% var recipe=recipes[i];%>
+                                <div class="ui segment" id="home-div-recipe">
+                                    
+                                    <img  src="<%=recipe.images[0]%> " class="ui large image" id="home-recipe-img">
+                                    <div id="home-recipe-content">
+                                        <a class="ui button floatRight" href="/blogs/<%=recipe._id%>" id="detail-button">
+                                               Read the full receipe     
+                                          <i class="angle double right icon"></i>
+                                          
+                                        </a>
+                                        
+                                        <h4  id="recipe-title"><%= recipe.title.toUpperCase() %></h4>
+                                        <p><strong id="usernameafterphoto">  <img class="ui avatar image" src="<%=recipe.creator.photo%>"><%=recipe.creator.username%></strong>
+                                     &nbsp <i>  at &nbsp<%=recipe.createDate%></i></p>
+                                    
+                                     <p2><strong>Hashtags: </strong>
+                                      <% recipe.healthy.forEach(function(tag){%>
+                                        &nbsp #<%=tag%>
+                                       <% }) %>
+                                       <% recipe.flavor.forEach(function(tag){ %>
+                                        &nbsp #<%=tag%>
+                                       <% })%>
+                                       </p2>
+                                    
+                                        
+                                        
+
+       
+       <p><%=recipe.desc%></p>
       
-</div>
-
-
-<% recipes.forEach(function(recipe){ %>
-<div class="ui grid container segment">
-    <div class="four wide column">
-        <img src="<%=recipe.image%>" class="ui medium rounded image">
-    </div>
-    <div class="twelve wide column">
         
-     <h2><%= recipe.title %></h2>
-     
-     <% recipe.steps.forEach(function(step){ %>
-     <p><%=step.content%></p>
-     
-     <% }) %>
+
+ </div>
+                                         
     </div>
-    <a href="/blogs/<%=recipe._id%>">More Details</a>
+
+<% } %>
+</div>
+</div>
+</div>
 </div>
 
-<% }) %>
+
+
 <% include partials/footer.ejs %>

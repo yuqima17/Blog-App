@@ -1,0 +1,76 @@
+<% include partials/header.ejs %>
+
+<div class="ui grid container">
+    <div class="five wide column" id="sidebar" >
+        <div class="ui container segments" id="sidecontent">
+            <div class="ui container segment">
+            
+                
+                 <img src="<%=foundtag[0].image%>" class="ui medium circular image" id="tag-img">
+            
+                <p id="desc"><%=foundtag[0].desc%></p>
+                </div>
+            </div>
+        </div>
+    
+    
+    <div class="eleven wide column" id="maincontent">
+        <div class="ui container segments">
+             
+            <% if (recipes.length==0){ %>
+            <div class="ui grid container segment" id="home-div-recipe">
+                <div class="sixteen wide column">
+            <p>There are no posts with this tag yet. Let's go create one!</p>
+            </div>
+            </div>
+        <% }else{ %>
+                                   <% for (var i=recipes.length-1;i>=0;i--){ %>
+                                <% var recipe=recipes[i];%>
+                                <div class="ui segment" id="home-div-recipe">
+                                    
+                                    <img  src="<%=recipe.images[0]%> " class="ui large image" id="home-recipe-img">
+                                    <div id="home-recipe-content">
+                                        <a class="ui button floatRight" href="/blogs/<%=recipe._id%>" id="detail-button">
+                                               Read the full receipe     
+                                          <i class="angle double right icon"></i>
+                                          
+                                        </a>
+                                        
+                                        <h4  id="recipe-title"><%= recipe.title.toUpperCase() %></h4>
+                                        <p><strong id="usernameafterphoto">  <img class="ui avatar image" src="<%=recipe.creator.photo%>"><%=recipe.creator.username%></strong>
+                                     &nbsp <i>  at &nbsp<%=recipe.createDate%></i></p>
+                                    
+                                     <p2><strong>Hashtags: </strong>
+                                      <% recipe.healthy.forEach(function(tag){%>
+                                        &nbsp #<%=tag%>
+                                       <% }) %>
+                                       <% recipe.flavor.forEach(function(tag){ %>
+                                        &nbsp #<%=tag%>
+                                       <% })%>
+                                       </p2>
+                                    
+                                        
+                                        
+
+       
+       <p><%=recipe.desc%></p>
+      
+        
+
+ </div>
+                                         
+    </div>
+
+<% } %>
+<% } %>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<% include partials/footer.ejs %>

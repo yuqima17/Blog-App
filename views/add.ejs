@@ -1,20 +1,101 @@
 <% include partials/header.ejs %>
 <div class="ui grid container segment">
-    <div class="sixteen wide column">
-         <form class="ui form" action="/blogs" method="POST">
+             
+<div class="sixteen wide column">
+
+  <div class="ui segment" id="add-div-form">
+    
+         <form class="ui form" action="/new" method="POST">
   <div class="field">
     <label>TITLE</label>
     <input type="text" name="recipe[title]" placeholder="Title here">
   </div>
   <div class="field">
-    <label>IMAGE</label>
-    <input type="text" name="recipe[image]" placeholder="Image URL here">
+    <label>BRIEF DESCRIPTION</label>
+    <textarea type="text" name="recipe[desc]" rows="1">Description</textarea>
+  </div>
+
+  
+  <div class="field" id="div-images">
+    <label id="lable-image">IMAGES</label><span id="addImageSpan"><i class="plus icon" ></i> </span>
+  </div>
+  
+  <div class="field" id="div-steps">
+    <label id="lable-Steps">STEPS</label><span id="addStepSpan"><i class="plus icon" ></i> </span>
+  </div>
+  
+    <div class="field" id="div-ings">
+    <label id="lable-Ings">INGREDIENTS</label><span id="addIngSpan"><i class="plus icon" ></i> </span>
+  </div>
+  
+  <div class="field">
+    <label id="lable-Meals">MEAL CATEGORY</label>
+    <div class="ui selection dropdown" id="div-meal">
+      <input type="hidden" name="recipe[meal]" id="inputCooktime">
+      <i class="dropdown icon"></i>
+      <div class="default text">Meal Category</div>
+      <div class="menu">
+              <div class="item" data-value="breakfast & brunch">breakfast & brunch</div>
+              <div class="item" data-value="lunch & dinner">lunch & dinner</div>
+              <div class="item" data-value="dessert">dessert</div>
+              <div class="item" data-value="snacks & appitizer">snacks & appitizer</div>
+              <div class="item" data-value="soup">soup</div>
+          </div>
+    </div>
+    
+  </div>
+    <div class="field">
+    <label id="lable-cooktime">COOK TIME</label>
+    <div class="ui selection dropdown" id="div-cooktime">
+      <input type="hidden" name="recipe[cooktime]">
+      <i class="dropdown icon"></i>
+      <div class="default text">COOK TIME</div>
+      <div class="menu">
+              <div class="item" data-value="<10 min">10 min</div>
+              <div class="item" data-value="10-20 min">10-20 min</div>
+              <div class="item" data-value="20 min-1 hr">20 min-1 hr</div>
+              <div class="item" data-value=">1 hr">>1 hr</div>
+          </div>
+    </div>
+    
+  </div>
+  
+  <div class="two fields">
+    <div class="field">
+      <label>HEALTH HASHTAGS</label>
+      <select class="ui fluid dropdown" multiple="" name="recipe[healthy]" >
+        <option value="">Healthy</option>
+   <option value="LowSugar&SugarFree">Sugar Free</option>
+   <option value="LowCalorie">Low Calorie</option>
+   <option value="Diabetic">Diabetic</option>
+   <option value="Vegan&Vegetarian">Vegan & Vegetarian</option>
+   <option value="LowCarb">Low Carb</option>
+   <option value="GlutenFree">Gluten Free</option>
+   <option value="LowFat">Low Fat</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>FLAVOR HASHTAGS</label>
+      <select class="ui fluid dropdown" multiple="" name="recipe[flavor]">
+        <option value="">Yammy</option>
+        <option value="Sweet">Sweet</option>
+        <option value="Savory">Savory</option>
+        <option value="Spicy">Spicy</option>
+        <option value="Spiced">Spiced</option>
+        <option value="Light">Light</option>
+        <option value="Sour">Sour</option>
+      </select>
+    </div>
   </div>
  
-  <button class="ui button" type="submit">Submit</button>
+  <div id="add-button-div"><button class="ui button" type="submit" id="add-button">Add Recipe</button></div>
 </form>
-    </div>
-   
+
+</div>
+
+
+</div>
+</div>
 </div>
 
 <% include partials/footer.ejs %>
