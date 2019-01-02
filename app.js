@@ -12,6 +12,8 @@ var User=require("./models/user.js");
 var Tag=require("./models/tag.js");
 var seed=require("./models/seed.js");
 app.use(methodOverride("_method"));
+var flash=require("connect-flash");
+app.use(flash());
 mongoose.connect("mongodb://localhost/recipe_db");
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -31,7 +33,12 @@ function addUser (req, res, next) {
   res.locals.currentUser=req.user;
   next();
 }
-
+app.use(function(req,res,next){
+    res.locals.needLogin=req.flash("needLogin");
+    res.locals.logedOut=req.flash("logedOut");
+   res.locals.signUpErr=req.flash("signUpErr")
+    next();
+})
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
@@ -278,7 +285,8 @@ app.post("/register",function(req,res){
     User.register(newUser,req.body.password,function(err,user){
         if(err){
             console.log(err);
-            res.render("register.ejs");
+            req.flash("signUpErr",err.message);
+            res.redirect("/register");
         }
         else{
             passport.authenticate("local")(req,res,function(){
@@ -298,6 +306,7 @@ app.post("/login",passport.authenticate("local",{successRedirect:"/blogs",failur
 })
 app.get("/logout",addUser,function(req,res){
     req.logout();
+    req.flash("logedOut","You are logged out!")
     res.redirect("/blogs")
 })
 
@@ -305,7 +314,9 @@ function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }
+    req.flash("needLogin","Please login first")
     res.redirect("/login");
+    
 }
 function resetSearch(){
     Recipe.find({},function(err,recipes){

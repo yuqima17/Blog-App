@@ -66,11 +66,11 @@ $(".ui.dropdown").dropdown();
 var divTag=document.querySelectorAll("#home-tag-div");
 divTag.forEach(function(div){
     div.addEventListener("mouseover",function(){
-        this.children[1].classList.remove("hidden");
-        this.children[0].classList.add("hidden");
+       
+        this.children[0].classList.remove("semi-trans");
     })
     div.addEventListener("mouseleave",function(){
-        this.children[1].classList.add("hidden");
-        this.children[0].classList.remove("hidden");
+        
+        this.children[0].classList.add("semi-trans");
     })
 })

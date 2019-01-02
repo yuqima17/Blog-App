@@ -32,8 +32,11 @@
                             <div class="ui container segment" id="home-side-tag">
                                 <% tags.forEach(function(tag){ %>
                                 <div id="home-tag-div">
-                                    <img src="<%=tag.image%>" id="home-tag-img">
-                                    <a href="/blogs/hashtags/<%=tag.tag%>" class="hidden" id="home-tag-img-back"><%=tag.tag%></a>
+                                    <a href="/blogs/hashtags/<%=tag.tag%>" class="semi-trans">
+                                        <img src="<%=tag.image%>" id="home-tag-img" title="<%=tag.tag%>">
+                                    </a>
+                                    <div class="centered"><span><%=tag.tag%></span></div>
+                                    
                                 </div>
                                 <% }) %>
                                 
