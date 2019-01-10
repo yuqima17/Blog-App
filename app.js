@@ -14,13 +14,13 @@ var seed=require("./models/seed.js");
 app.use(methodOverride("_method"));
 var flash=require("connect-flash");
 app.use(flash());
-mongoose.connect("mongodb://localhost/recipe_db");
+mongoose.connect("mongodb://yuqimaMLAB:Yuki_19950523@ds147354.mlab.com:47354/recipe_blog");
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static(__dirname+"/public"));
 var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 var options2 = { year: 'numeric', month: 'numeric', day: 'numeric' };
-//seed();
+seed();
 
 app.use(require("express-session")({
     secret:"This is secret",
