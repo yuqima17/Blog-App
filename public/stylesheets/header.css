@@ -172,6 +172,8 @@ p6{
 }
 #home-recipe-img{
     margin:10px;
+    height:350px;
+    object-fit:cover
 }
 #home-recipe-content{
     margin:10px;
