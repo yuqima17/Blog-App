@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
 var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 var options2 = { year: 'numeric', month: 'numeric', day: 'numeric' };
-seed();
+//seed();
 
 app.use(require("express-session")({
     secret:"This is secret",
