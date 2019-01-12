@@ -10,7 +10,7 @@ var Recipe=require("./models/recipes.js");
 var Comment=require("./models/comments.js");
 var User=require("./models/user.js");
 var Tag=require("./models/tag.js");
-var seed=require("./models/seed.js");
+
 app.use(methodOverride("_method"));
 var flash=require("connect-flash");
 app.use(flash());
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
 var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 var options2 = { year: 'numeric', month: 'numeric', day: 'numeric' };
-//seed();
+
 
 app.use(require("express-session")({
     secret:"This is secret",
@@ -368,4 +368,3 @@ app.listen(process.env.PORT,process.env.IP,function(){
     console.log("start!");
 })
 
-//googleAPI:AIzaSyAc5kxcYWyPlN64x5Bbf0Em1n9CAU9RDZw
